@@ -1,0 +1,42 @@
+{
+  "name": "marathilipi",
+  "version": "1.0.0",
+  "description": "Write TypeScript using Marathi (Devanagari) keywords — transpiled and executed via the official TypeScript compiler.",
+  "main": "dist/index.js",
+  "bin": {
+    "marathilipi": "./dist/cli/cli.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "dev": "ts-node src/cli/cli.ts",
+    "start": "node dist/cli/cli.js",
+    "test": "jest"
+  },
+  "keywords": [
+    "marathi",
+    "devanagari",
+    "typescript",
+    "transpiler",
+    "cli",
+    "language"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.12.7",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "ts-node": "^10.9.2"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/tests/**/*.test.ts"
+    ]
+  }
+}
