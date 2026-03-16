@@ -478,10 +478,43 @@ Press **Run** — the console shows:
 
 ---
 
+## VS Code Extension
+
+Install the **MarathiLipi Language Support** extension for full syntax
+highlighting directly in VS Code.
+
+### Install from VSIX
+
+```bash
+cd vscode-extension
+npm install
+npm run package          # builds marathilipi-language-0.1.0.vsix
+
+code --install-extension marathilipi-language-0.1.0.vsix
+```
+
+### Load unpacked (development)
+
+1. Open the `vscode-extension/` folder in VS Code.
+2. Press **F5** — a new Extension Development Host window opens.
+3. Open any `.ml` file to see coloured Marathi keywords.
+
+### Features
+
+| Feature | Detail |
+|---------|--------|
+| Syntax highlighting | All MarathiLipi keywords, strings, numbers, comments |
+| Language detection | Automatic for `.ml` files |
+| Bracket matching | `{}` `[]` `()` |
+| Auto-closing pairs | Brackets and quotes |
+| Comment shortcuts | `//` line comments, `/* */` block comments |
+| Indentation | Smart indent/outdent around blocks |
+
+---
+
 ## Roadmap
 
 - AST-level parsing
-- VS Code extension with syntax highlighting
 - Marathi error messages
 - English → Marathi translator
 
