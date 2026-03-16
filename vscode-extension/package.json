@@ -1,0 +1,57 @@
+{
+  "name": "marathilipi-language",
+  "displayName": "MarathiLipi Language Support",
+  "description": "Syntax highlighting and language support for MarathiLipi — write TypeScript using Marathi (Devanagari) keywords.",
+  "version": "0.1.0",
+  "publisher": "marathilipi",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "keywords": [
+    "marathi",
+    "devanagari",
+    "marathilipi",
+    "syntax highlighting",
+    "programming language"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Yuyutsu/marathilipi"
+  },
+  "bugs": {
+    "url": "https://github.com/Yuyutsu/marathilipi/issues"
+  },
+  "contributes": {
+    "languages": [
+      {
+        "id": "marathilipi",
+        "aliases": [
+          "MarathiLipi",
+          "marathilipi"
+        ],
+        "extensions": [
+          ".ml"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "marathilipi",
+        "scopeName": "source.marathilipi",
+        "path": "./syntaxes/marathilipi.tmLanguage.json"
+      }
+    ]
+  },
+  "main": "",
+  "scripts": {
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^2.24.0"
+  }
+}

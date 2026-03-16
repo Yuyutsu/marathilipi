@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MarathiLipi Playground</title>
+
+  <!-- Favicon (emoji fallback) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏆</text></svg>" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!--
+    Monaco Editor AMD loader
+    Loaded from jsDelivr CDN (MIT-licensed).
+    Pinned to 0.47.0 for reproducibility.
+  -->
+  <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/loader.js"></script>
+</head>
+<body>
+<div id="app">
+
+  <!-- ── Toolbar ──────────────────────────────────────────────────────── -->
+  <div id="toolbar">
+    <div class="brand">
+      <span class="brand-icon">🏆</span>
+      <span class="brand-name">MarathiLipi</span>
+      <span class="brand-badge">Playground</span>
+    </div>
+
+    <div class="separator"></div>
+
+    <button id="btn-run" class="btn btn-run" title="Run code (Ctrl+Enter)">
+      <span class="btn-icon">▶</span>
+      Run
+      <span class="shortcut-hint">Ctrl+Enter</span>
+    </button>
+
+    <button id="btn-clear" class="btn btn-secondary" title="Clear console output">
+      <span class="btn-icon">🗑</span>
+      Clear
+    </button>
+
+    <button id="btn-copy" class="btn btn-secondary" title="Copy console output">
+      <span class="btn-icon">📋</span>
+      Copy Output
+    </button>
+  </div>
+
+  <!-- ── Main split pane ──────────────────────────────────────────────── -->
+  <div id="main">
+
+    <!-- Left: Editor -->
+    <div id="editor-pane">
+      <div id="editor-label">
+        <span class="tab-dot"></span>
+        <span>untitled.ml — MarathiLipi</span>
+      </div>
+      <div id="editor-container"></div>
+    </div>
+
+    <!-- Drag handle -->
+    <div id="resize-handle" title="Drag to resize"></div>
+
+    <!-- Right: Console -->
+    <div id="console-pane">
+      <div id="console-label">
+        <span>
+          <span>▸ Console</span>
+        </span>
+        <span id="line-count"></span>
+      </div>
+      <div id="console-output">
+        <div class="console-empty">Press <strong>Run</strong> (or <strong>Ctrl+Enter</strong>) to execute your MarathiLipi code.</div>
+      </div>
+    </div>
+
+  </div><!-- /#main -->
+
+  <!-- ── Status bar ───────────────────────────────────────────────────── -->
+  <div id="status-bar">
+    <div id="status-left">
+      <span>MarathiLipi v1.0</span>
+      <span id="status-msg">Loading…</span>
+    </div>
+    <div id="status-right">
+      <span id="cursor-pos">Ln 1, Col 1</span>
+      <span>UTF-8</span>
+    </div>
+  </div>
+
+</div><!-- /#app -->
+
+<!-- Toast notification -->
+<div id="toast"></div>
+
+<!-- ── Scripts (order matters) ──────────────────────────────────────── -->
+<!--
+  1. transpiler-browser.js  — sets window.transpileMarathi + window.marathiKeywords
+  2. language.js            — sets window.registerMarathiLipiLanguage
+  3. console.js             — sets window.setupConsoleCapture + window.restoreConsole
+  4. main.js                — bootstraps Monaco and wires everything up
+-->
+<script src="transpiler-browser.js"></script>
+<script src="language.js"></script>
+<script src="console.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>
