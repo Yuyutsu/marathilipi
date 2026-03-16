@@ -4,3 +4,8 @@ dist/
 *.d.ts
 .env
 .DS_Store
+
+# Compiled test artifacts (ts-jest compiles in-memory, tsc output not needed here)
+tests/*.js
+tests/*.d.ts
+tests/*.js.map
