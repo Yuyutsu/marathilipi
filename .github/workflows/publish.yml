@@ -31,6 +31,15 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Verify npm auth token is set
+        run: |
+          if [ -z "$NODE_AUTH_TOKEN" ]; then
+            echo "::error::NODE_AUTH_TOKEN secret is not set. Add an npm access token as a repository secret named NODE_AUTH_TOKEN (Settings → Secrets and variables → Actions)."
+            exit 1
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+
       - name: Publish to npm
         run: npm publish --access public
         env:
