@@ -64,40 +64,64 @@ marathilipi run --verbose examples/hello.ml
 ### Hello World
 
 ```
-सांग("जय महाराष्ट्र")
+दाखवा("जय महाराष्ट्र")
 ```
 
 ### Variables
 
 ```
-चल नाव = "अमोल"
-स्थिर वय = 25
+नाव व्यक्ती = "अमोल"
+स्थिर नाव PI = 3.14
+कायम MAX = 100
+जुने नाव legacy = 0
 ```
 
 ### If / Else
 
 ```
-जर (नाव) {
-  सांग("नमस्कार " + नाव)
+नाव वय = 25
+
+जर (वय > 18) {
+  दाखवा("प्रौढ")
 } नाहीतर {
-  सांग("कोण आहेस?")
+  दाखवा("लहान")
 }
 ```
 
 ### Functions
 
 ```
-कार्य स्वागत(नाव) {
-  परत "नमस्कार " + नाव
+काम स्वागत(व्यक्ती) {
+  परत "नमस्कार " + व्यक्ती
+}
+```
+
+### Async / Await
+
+```
+समकाल काम डेटाआणा() {
+  नाव परिणाम = प्रतीक्षा fetch("/api")
+  दाखवा(परिणाम)
 }
 ```
 
 ### Loops
 
 ```
-साठी (चल i = 0; i < 5; i++) {
-  सांग(i)
+पुन्हा (नाव i = 0; i < 5; i++) {
+  दाखवा(i)
 }
+```
+
+### Classes
+
+```
+प्रकार प्राणी {
+  निर्माता(नाव) {
+    हा.नाव = नाव
+  }
+}
+```
 ```
 
 ---
@@ -113,22 +137,63 @@ marathilipi run --verbose examples/hello.ml
 
 ## Keyword Reference
 
-| Marathi      | TypeScript    |
-|--------------|---------------|
-| चल           | let           |
-| स्थिर        | const         |
-| कार्य        | function      |
-| परत          | return        |
-| जर           | if            |
-| नाहीतर       | else          |
-| जोपर्यंत     | while         |
-| साठी         | for           |
-| वर्ग         | class         |
-| सांग         | console.log   |
-| आयात         | import        |
-| निर्यात      | export        |
-| खरे          | true          |
-| खोटे         | false         |
+Multi-word phrases (e.g. `स्थिर नाव`) are matched as complete phrases before their component words.
+Rows with `/` list aliases that all map to the same TypeScript keyword.
+
+| MarathiLipi                  | TypeScript       |
+|------------------------------|------------------|
+| नाव                          | let              |
+| स्थिर नाव / कायम            | const            |
+| जुने नाव                     | var              |
+| जर                           | if               |
+| नाहीतर                       | else             |
+| निवडा                        | switch           |
+| प्रकरण                       | case             |
+| मूळ                          | default          |
+| पुन्हा                       | for              |
+| जोपर्यंत                     | while            |
+| करा                          | do               |
+| थांब                         | break            |
+| पुढे                         | continue         |
+| काम                          | function         |
+| परत                          | return           |
+| वेढा                         | yield            |
+| समकाल / असिन्क्रॉन           | async            |
+| प्रतीक्षा                    | await            |
+| प्रकार                       | class            |
+| वाढवा                        | extends          |
+| नवीन                         | new              |
+| हा                           | this             |
+| पालक                         | super            |
+| निर्माता                     | constructor      |
+| आणा                          | import           |
+| पासून                        | from             |
+| द्या                         | export           |
+| मूळ द्या                     | export default   |
+| प्रयत्न                      | try              |
+| पकडा                         | catch            |
+| शेवटी                        | finally          |
+| फेका                         | throw            |
+| दाखवा / सांगा / छापा        | console.log      |
+| चूक                          | console.error    |
+| सूचना                        | console.warn     |
+| माहिती                       | console.info     |
+| हटवा                         | delete           |
+| मध्ये                        | in               |
+| उदाहरण                       | instanceof       |
+| प्रकारघोषणा                  | type             |
+| अंतरफलक                      | interface        |
+| नामविश्व                     | namespace        |
+| जाहीर                        | declare          |
+| अमूर्त                       | abstract         |
+| सार्वजनिक                    | public           |
+| खाजगी                        | private          |
+| संरक्षित                     | protected        |
+| स्थिरसदस्य                   | static           |
+| फक्तवाचा                     | readonly         |
+| की                           | keyof            |
+| अनुमान                       | infer            |
+| संतोष                        | satisfies        |
 
 ---
 
@@ -161,7 +226,8 @@ marathilipi/
 │   │   └── fileUtils.ts    # file I/O helpers
 │   └── index.ts            # public library API
 ├── examples/
-│   └── hello.ml            # example MarathiLipi program
+│   ├── hello.ml            # hello world example
+│   └── age_check.ml        # if/else example
 ├── tests/
 │   └── transpiler.test.ts  # unit tests
 ├── package.json
