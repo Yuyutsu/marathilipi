@@ -13,7 +13,7 @@ official TypeScript compiler API — no custom parser needed.
 ```
 MarathiLipi (.ml)
       ↓
-  Transpiler
+  Transpiler       ← keyword replacement (src/core/keywordMap.ts)
       ↓
 TypeScript Code
       ↓
@@ -61,24 +61,49 @@ marathilipi run --verbose examples/hello.ml
 
 ## Syntax Examples
 
+Each example shows MarathiLipi source on the left and the TypeScript it
+produces on the right.
+
+---
+
 ### Hello World
 
-```
+**MarathiLipi**
+```ml
 दाखवा("जय महाराष्ट्र")
 ```
 
+**TypeScript**
+```typescript
+console.log("जय महाराष्ट्र")
+```
+
+---
+
 ### Variables
 
+**MarathiLipi**
+```ml
+नाव व्यक्ती   = "अमोल"   // let
+स्थिर नाव PI  = 3.14      // const (two-word phrase)
+कायम MAX       = 100       // const (alias)
+जुने नाव x    = 0         // var   (two-word phrase)
 ```
-नाव व्यक्ती = "अमोल"
-स्थिर नाव PI = 3.14
-कायम MAX = 100
-जुने नाव legacy = 0
+
+**TypeScript**
+```typescript
+let व्यक्ती   = "अमोल"
+const PI       = 3.14
+const MAX      = 100
+var x          = 0
 ```
+
+---
 
 ### If / Else
 
-```
+**MarathiLipi**
+```ml
 नाव वय = 25
 
 जर (वय > 18) {
@@ -88,40 +113,185 @@ marathilipi run --verbose examples/hello.ml
 }
 ```
 
+**TypeScript**
+```typescript
+let वय = 25
+
+if (वय > 18) {
+  console.log("प्रौढ")
+} else {
+  console.log("लहान")
+}
+```
+
+---
+
+### Switch / Case
+
+**MarathiLipi**
+```ml
+निवडा (वय) {
+  प्रकरण 18:
+    दाखवा("अठरा")
+    थांब
+  मूळ:
+    दाखवा("इतर")
+}
+```
+
+**TypeScript**
+```typescript
+switch (वय) {
+  case 18:
+    console.log("अठरा")
+    break
+  default:
+    console.log("इतर")
+}
+```
+
+---
+
 ### Functions
 
-```
+**MarathiLipi**
+```ml
 काम स्वागत(व्यक्ती) {
   परत "नमस्कार " + व्यक्ती
 }
 ```
 
+**TypeScript**
+```typescript
+function स्वागत(व्यक्ती) {
+  return "नमस्कार " + व्यक्ती
+}
+```
+
+---
+
+### Loops
+
+**MarathiLipi**
+```ml
+पुन्हा (नाव i = 0; i < 5; i++) {
+  दाखवा(i)
+}
+```
+
+**TypeScript**
+```typescript
+for (let i = 0; i < 5; i++) {
+  console.log(i)
+}
+```
+
+---
+
 ### Async / Await
 
-```
+**MarathiLipi**
+```ml
 समकाल काम डेटाआणा() {
   नाव परिणाम = प्रतीक्षा fetch("/api")
   दाखवा(परिणाम)
 }
 ```
 
-### Loops
-
-```
-पुन्हा (नाव i = 0; i < 5; i++) {
-  दाखवा(i)
+**TypeScript**
+```typescript
+async function डेटाआणा() {
+  let परिणाम = await fetch("/api")
+  console.log(परिणाम)
 }
 ```
+
+---
 
 ### Classes
 
-```
+**MarathiLipi**
+```ml
 प्रकार प्राणी {
-  निर्माता(नाव) {
-    हा.नाव = नाव
+  निर्माता(व्यक्ती) {
+    हा.व्यक्ती = व्यक्ती
   }
 }
 ```
+
+**TypeScript**
+```typescript
+class प्राणी {
+  constructor(व्यक्ती) {
+    this.व्यक्ती = व्यक्ती
+  }
+}
+```
+
+---
+
+### Error Handling
+
+**MarathiLipi**
+```ml
+प्रयत्न {
+  दाखवा("धोकादायक कोड")
+} पकडा (अडचण) {
+  चूक(अडचण.message)
+} शेवटी {
+  दाखवा("शेवट")
+}
+```
+
+**TypeScript**
+```typescript
+try {
+  console.log("धोकादायक कोड")
+} catch (अडचण) {
+  console.error(अडचण.message)
+} finally {
+  console.log("शेवट")
+}
+```
+
+---
+
+### Imports / Exports
+
+**MarathiLipi**
+```ml
+आणा { add } पासून "./utils"
+द्या काम greet() {}
+मूळ द्या काम main() {}
+```
+
+**TypeScript**
+```typescript
+import { add } from "./utils"
+export function greet() {}
+export default function main() {}
+```
+
+---
+
+### TypeScript Types
+
+**MarathiLipi**
+```ml
+अंतरफलक IUser {
+  वय: number
+}
+
+प्रकारघोषणा ID = string | number
+```
+
+**TypeScript**
+```typescript
+interface IUser {
+  वय: number
+}
+
+type ID = string | number
 ```
 
 ---
@@ -252,3 +422,4 @@ npm test
 - Marathi error messages
 - Web playground
 - English → Marathi translator
+
