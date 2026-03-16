@@ -422,11 +422,66 @@ npm test
 
 ---
 
+## MarathiLipi Playground
+
+A fully interactive browser playground — no installation needed.
+
+### Running the playground locally
+
+```bash
+# Clone the repository (if you haven't already)
+git clone https://github.com/Yuyutsu/marathilipi.git
+cd marathilipi
+
+# Open the playground in your browser
+open playground/index.html          # macOS
+xdg-open playground/index.html      # Linux
+start playground/index.html         # Windows
+```
+
+The playground loads Monaco Editor (VS Code) from CDN, so an internet
+connection is required on first open.  Everything else runs entirely in the
+browser — no build step, no server.
+
+### Features
+
+| Feature | Detail |
+|---------|--------|
+| **Monaco Editor** | VS Code editor with full keyboard support |
+| **Syntax highlighting** | Custom `marathilipi` language with keyword colouring |
+| **Run** | Click **Run** or press **Ctrl+Enter** |
+| **Console output** | `दाखवा` / `console.log` output appears in the right panel |
+| **Error display** | Runtime errors shown in red in the console |
+| **Copy output** | Copy all console lines to clipboard |
+| **Resizable panes** | Drag the divider to adjust editor / console widths |
+
+### Example
+
+Write this in the editor:
+
+```ml
+नाव व्यक्ती = "अमोल"
+
+दाखवा("जय महाराष्ट्र")
+
+जर (व्यक्ती) {
+  दाखवा("नमस्कार " + व्यक्ती)
+}
+```
+
+Press **Run** — the console shows:
+
+```
+जय महाराष्ट्र
+नमस्कार अमोल
+```
+
+---
+
 ## Roadmap
 
 - AST-level parsing
 - VS Code extension with syntax highlighting
 - Marathi error messages
-- Web playground
 - English → Marathi translator
 
