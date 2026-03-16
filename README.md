@@ -29,15 +29,16 @@ Node.js Runtime
 ## Installation
 
 ```bash
-# Clone & install
+npm install -g marathilipi
+```
+
+### Development (from source)
+
+```bash
 git clone https://github.com/Yuyutsu/marathilipi.git
 cd marathilipi
 npm install
-
-# Build
 npm run build
-
-# (Optional) Link globally
 npm link
 ```
 
@@ -46,15 +47,21 @@ npm link
 ## CLI Usage
 
 ```bash
-# Using the built binary
-node dist/cli/cli.js examples/hello.ml
-
-# Or after npm link / npx
-marathilipi examples/hello.ml
-marathilipi run examples/hello.ml
+marathilipi hello.ml
+marathilipi run hello.ml
 
 # Print generated TypeScript before execution
-marathilipi run --verbose examples/hello.ml
+marathilipi run --verbose hello.ml
+```
+
+**Quick example**
+
+```ml
+नाव वय = 25
+
+जर (वय > 18) {
+  दाखवा("प्रौढ")
+}
 ```
 
 ---
