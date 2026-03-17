@@ -1,9 +1,6 @@
-import React from "react";
-
 interface CodeBlockProps {
   code: string;
   title?: string;
-  language?: string;
 }
 
 export default function CodeBlock({ code, title }: CodeBlockProps) {

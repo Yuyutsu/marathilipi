@@ -47,7 +47,7 @@ export default async function ClassesPage({
           />
           <CodeBlock
             title={d.equivalentTs}
-            code={`class व्यक्ती {\n  constructor(public नाव_फील्ड: string) {}\n\n  function अभिवादन() {\n    console.log("नमस्कार " + this.नाव_फील्ड)\n  }\n}\n\nlet राज = new व्यक्ती("राज")\nराज.अभिवादन()`}
+            code={`class व्यक्ती {\n  constructor(public नाव_फील्ड: string) {}\n\n  अभिवादन() {\n    console.log("नमस्कार " + this.नाव_फील्ड)\n  }\n}\n\nlet राज = new व्यक्ती("राज")\nराज.अभिवादन()`}
           />
         </div>
       </DocSection>

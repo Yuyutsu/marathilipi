@@ -1,3 +1,5 @@
+// Keyword map ordered with multi-word phrases before component words
+// to ensure longest-match-first strategy works correctly.
 const keywordMap: [string, string][] = [
   ["स्थिर नाव", "const"],
   ["जुने नाव", "var"],

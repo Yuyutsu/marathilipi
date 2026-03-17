@@ -29,11 +29,12 @@ export default function PlaygroundClient({ lang }: { lang: Lang }) {
       new Function(tsOutput)();
     } catch (e) {
       logs.push("[ERROR] " + String(e));
+    } finally {
+      console.log = savedLog;
+      console.error = savedError;
+      console.warn = savedWarn;
+      console.info = savedInfo;
     }
-    console.log = savedLog;
-    console.error = savedError;
-    console.warn = savedWarn;
-    console.info = savedInfo;
     setOutput(logs.join("\n"));
   }, [tsOutput]);
 
