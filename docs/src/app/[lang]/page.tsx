@@ -3,11 +3,11 @@ import { t, type Lang } from "@/i18n/content";
 import CodeBlock from "@/components/CodeBlock";
 export { generateStaticParams } from "@/i18n/params";
 
-const mlCode = `चल नाव = "राजसाहेब"
-सांगा("जय महाराष्ट्र " + नाव)`;
+const mlCode = `नाव साहेब = "राजसाहेब"
+सांगा("जय महाराष्ट्र " + साहेब)`;
 
-const tsCode = `let नाव = "राजसाहेब"
-console.log("जय महाराष्ट्र " + नाव)`;
+const tsCode = `let saheb = "राजसाहेब"
+console.log("जय महाराष्ट्र " + saheb)`;
 
 export default async function LandingPage({
   params,
