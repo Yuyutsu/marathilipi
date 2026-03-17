@@ -4,10 +4,10 @@ import CodeBlock from "@/components/CodeBlock";
 export { generateStaticParams } from "@/i18n/params";
 
 const mlCode = `चल नाव = "राजसाहेब"
-सांगा("नमस्कार " + नाव)`;
+सांगा("जय महाराष्ट्र " + नाव)`;
 
 const tsCode = `let नाव = "राजसाहेब"
-console.log("नमस्कार " + नाव)`;
+console.log("जय महाराष्ट्र " + नाव)`;
 
 export default async function LandingPage({
   params,
