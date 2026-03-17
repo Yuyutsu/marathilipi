@@ -64,7 +64,7 @@ function registerMarathiLipiLanguage(monaco) {
       // Error handling
       "प्रयत्न", "पकडा", "शेवटी", "फेका",
       // Console (treated as built-in)
-      "दाखवा", "सांगा", "छापा", "चूक", "सूचना", "माहिती",
+      "दाखवा", "सांगा", "सांग", "छापा", "चूक", "सूचना", "माहिती",
     ],
 
     typeKeywords: [
