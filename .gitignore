@@ -14,3 +14,8 @@ tests/*.js.map
 vscode-extension/out/
 vscode-extension/node_modules/
 vscode-extension/*.vsix
+
+# Documentation site build artifacts
+docs/.next/
+docs/node_modules/
+docs/out/
