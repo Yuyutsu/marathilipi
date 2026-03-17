@@ -2,11 +2,12 @@ export const content = {
   playground: {
     title: "Playground",
     subtitle:
-      "Write MarathiLipi code and see the generated TypeScript in real time.",
+      "Write MarathiLipi code and run it to see the output.",
     editorLabel: "MarathiLipi",
-    outputLabel: "TypeScript Output",
+    outputLabel: "Console",
     run: "Run",
-    copy: "Copy",
+    copy: "Copy Output",
     copied: "Copied",
+    consoleEmpty: "Press Run (or Ctrl+Enter) to execute your MarathiLipi code.",
   },
 } as const;
