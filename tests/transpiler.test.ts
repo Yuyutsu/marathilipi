@@ -23,6 +23,11 @@ describe("transpile() — single keywords", () => {
     expect(typescript).toBe('console.log("नमस्कार")');
   });
 
+  it("replaces alias सांग with console.log", () => {
+    const { typescript } = transpile('सांग("नमस्कार")');
+    expect(typescript).toBe('console.log("नमस्कार")');
+  });
+
   it("replaces alias छापा with console.log", () => {
     const { typescript } = transpile('छापा("नमस्कार")');
     expect(typescript).toBe('console.log("नमस्कार")');
@@ -227,6 +232,10 @@ describe("keywordMap", () => {
 
   it("maps सांगा to console.log (alias)", () => {
     expect(keywordMap["सांगा"]).toBe("console.log");
+  });
+
+  it("maps सांग to console.log (alias)", () => {
+    expect(keywordMap["सांग"]).toBe("console.log");
   });
 
   it("maps छापा to console.log (alias)", () => {

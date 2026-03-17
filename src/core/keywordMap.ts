@@ -1,97 +1,28 @@
 /**
  * keywordMap.ts
  *
- * Single source of truth for all Marathi → TypeScript keyword translations.
+ * Flat Marathi → TypeScript lookup table, derived from the canonical
+ * structured dictionary in `dictionary.ts`.
+ *
+ * Consumers that need the raw `Record<string, string>` map (e.g. the
+ * existing test suite) continue to import from here.  New code should
+ * prefer importing directly from `dictionary.ts` which carries richer
+ * metadata (descriptions, alias groupings, romanized prefixes).
  *
  * To add a new keyword:
- *   1. Add an entry here: "मराठी_शब्द": "tsKeyword"
- *   2. No other file needs to change — the transpiler reads this map dynamically.
- *
- * Multi-word phrases (e.g. "स्थिर नाव") are supported. The transpiler processes
- * longer strings first, so multi-word phrases are always matched before their
- * component words. Cells that list multiple aliases (A / B) appear as separate
- * map entries that all point to the same TypeScript keyword.
+ *   1. Add an entry to `dictionary.ts`.
+ *   2. This file automatically reflects the change — no edits needed here.
  */
 
-export const keywordMap: Record<string, string> = {
-  // ── Variable declarations ────────────────────────────────────────────────
-  // Multi-word phrases must appear before their component words so the
-  // transpiler's longest-first sort replaces them as complete phrases.
-  "स्थिर नाव": "const",    // const  (two-word phrase)
-  "जुने नाव": "var",       // var    (two-word phrase)
-  "नाव": "let",             // let
+import { dictionary } from "./dictionary";
 
-  // Alias for const
-  "कायम": "const",
-
-  // ── Control flow ──────────────────────────────────────────────────────────
-  "जर": "if",
-  "नाहीतर": "else",
-  "निवडा": "switch",
-  "प्रकरण": "case",
-  "मूळ": "default",
-  "पुन्हा": "for",
-  "जोपर्यंत": "while",
-  "करा": "do",
-  "थांब": "break",
-  "पुढे": "continue",
-
-  // ── Functions ─────────────────────────────────────────────────────────────
-  "काम": "function",
-  "परत": "return",
-  "वेढा": "yield",
-
-  // ── Async ─────────────────────────────────────────────────────────────────
-  "समकाल": "async",
-  "असिन्क्रॉन": "async",   // alias
-  "प्रतीक्षा": "await",
-
-  // ── Classes & objects ─────────────────────────────────────────────────────
-  "प्रकार": "class",
-  "वाढवा": "extends",
-  "नवीन": "new",
-  "हा": "this",
-  "पालक": "super",
-  "निर्माता": "constructor",
-
-  // ── Imports / exports ─────────────────────────────────────────────────────
-  // "मूळ द्या" must precede "मूळ" and "द्या" so the phrase is matched first.
-  "मूळ द्या": "export default",
-  "आणा": "import",
-  "पासून": "from",
-  "द्या": "export",
-
-  // ── Error handling ────────────────────────────────────────────────────────
-  "प्रयत्न": "try",
-  "पकडा": "catch",
-  "शेवटी": "finally",
-  "फेका": "throw",
-
-  // ── Console ───────────────────────────────────────────────────────────────
-  "दाखवा": "console.log",
-  "सांगा": "console.log",  // alias
-  "छापा": "console.log",   // alias
-  "चूक": "console.error",
-  "सूचना": "console.warn",
-  "माहिती": "console.info",
-
-  // ── Operators / misc ──────────────────────────────────────────────────────
-  "हटवा": "delete",
-  "मध्ये": "in",
-  "उदाहरण": "instanceof",
-
-  // ── TypeScript-only keywords ──────────────────────────────────────────────
-  "प्रकारघोषणा": "type",
-  "अंतरफलक": "interface",
-  "नामविश्व": "namespace",
-  "जाहीर": "declare",
-  "अमूर्त": "abstract",
-  "सार्वजनिक": "public",
-  "खाजगी": "private",
-  "संरक्षित": "protected",
-  "स्थिरसदस्य": "static",
-  "फक्तवाचा": "readonly",
-  "की": "keyof",
-  "अनुमान": "infer",
-  "संतोष": "satisfies",
-};
+/**
+ * Flat map of every Marathi pattern → its TypeScript replacement.
+ * Multi-word phrases (e.g. "स्थिर नाव") and aliases are all present as
+ * individual keys, exactly as they were before the dictionary refactor.
+ */
+export const keywordMap: Record<string, string> = Object.fromEntries(
+  dictionary.flatMap(({ patterns, replace }) =>
+    patterns.map((p) => [p, replace])
+  )
+);
