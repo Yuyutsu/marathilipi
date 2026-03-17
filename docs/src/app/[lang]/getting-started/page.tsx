@@ -34,11 +34,11 @@ export default async function GettingStartedPage({
         <div className="grid md:grid-cols-2 gap-4 mb-4">
           <CodeBlock
             title="hello.ml"
-            code={`चल नाव = "राजसाहेब"\nसांगा("नमस्कार " + नाव)`}
+            code={`चल नाव = "राजसाहेब"\nसांगा("जय महाराष्ट्र " + नाव)`}
           />
           <CodeBlock
             title="TypeScript"
-            code={`let नाव = "राजसाहेब"\nconsole.log("नमस्कार " + नाव)`}
+            code={`let नाव = "राजसाहेब"\nconsole.log("जय महाराष्ट्र " + नाव)`}
           />
         </div>
       </section>
@@ -50,7 +50,7 @@ export default async function GettingStartedPage({
         <CodeBlock code="marathilipi run hello.ml" title="Terminal" />
         <div className="mt-4 rounded-lg border border-zinc-800 bg-zinc-950 p-4">
           <p className="text-xs text-zinc-500 mb-1">{gs.outputTitle}</p>
-          <pre className="text-sm text-green-400">नमस्कार राजसाहेब</pre>
+          <pre className="text-sm text-green-400">जय महाराष्ट्र राजसाहेब</pre>
         </div>
       </section>
 
