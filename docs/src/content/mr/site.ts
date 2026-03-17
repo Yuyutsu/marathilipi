@@ -1,0 +1,36 @@
+export const content = {
+  siteName: "मराठीलिपी",
+  tagline: "मराठीत TypeScript लिहा",
+  heroSubtitle:
+    "मराठीलिपी विकसकांना मराठी वाक्यरचना वापरून JavaScript आणि TypeScript लिहिण्यास सक्षम करते.",
+  getStarted: "सुरुवात करा",
+  tryPlayground: "Playground वापरा",
+  heroCodeTitle: "मराठीलिपी",
+  heroTsTitle: "TypeScript",
+  nav: {
+    home: "मुख्यपृष्ठ",
+    gettingStarted: "सुरुवात",
+    docs: "दस्तऐवज",
+    playground: "Playground",
+    vscode: "VS Code विस्तार",
+    architecture: "आर्किटेक्चर",
+    about: "बद्दल",
+  },
+  sidebar: {
+    languageReference: "भाषा संदर्भ",
+    variables: "चलने (Variables)",
+    controlFlow: "नियंत्रण प्रवाह (Control Flow)",
+    loops: "लूप्स (Loops)",
+    functions: "कार्ये (Functions)",
+    classes: "वर्ग (Classes)",
+    asyncAwait: "Async / Await",
+    modules: "मॉड्यूल्स (Modules)",
+    errorHandling: "त्रुटी हाताळणी (Error Handling)",
+    console: "कन्सोल (Console)",
+  },
+  footer: {
+    copyright: "मराठीलिपी. MIT परवान्याखाली ओपन सोर्स.",
+    github: "GitHub",
+    npm: "npm",
+  },
+} as const;

@@ -1,0 +1,36 @@
+export const content = {
+  siteName: "MarathiLipi",
+  tagline: "Write TypeScript in Marathi",
+  heroSubtitle:
+    "MarathiLipi enables developers to write JavaScript and TypeScript using Marathi syntax.",
+  getStarted: "Get Started",
+  tryPlayground: "Try Playground",
+  heroCodeTitle: "MarathiLipi",
+  heroTsTitle: "TypeScript",
+  nav: {
+    home: "Home",
+    gettingStarted: "Getting Started",
+    docs: "Documentation",
+    playground: "Playground",
+    vscode: "VS Code Extension",
+    architecture: "Architecture",
+    about: "About",
+  },
+  sidebar: {
+    languageReference: "Language Reference",
+    variables: "Variables",
+    controlFlow: "Control Flow",
+    loops: "Loops",
+    functions: "Functions",
+    classes: "Classes",
+    asyncAwait: "Async / Await",
+    modules: "Modules",
+    errorHandling: "Error Handling",
+    console: "Console",
+  },
+  footer: {
+    copyright: "MarathiLipi. Open source under MIT License.",
+    github: "GitHub",
+    npm: "npm",
+  },
+} as const;
