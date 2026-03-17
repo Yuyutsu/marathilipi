@@ -9,7 +9,7 @@
  */
 
 // ── Keyword map ────────────────────────────────────────────────────────────
-// Mirrors src/core/keywordMap.ts exactly.  Multi-word phrases must be listed
+// Mirrors src/core/dictionary.ts exactly.  Multi-word phrases must be listed
 // before their component words so the longest-first sort matches them first.
 const keywordMap = {
   // Variable declarations
@@ -63,6 +63,7 @@ const keywordMap = {
   // Console
   "दाखवा": "console.log",
   "सांगा":  "console.log",
+  "सांग":   "console.log",
   "छापा":   "console.log",
   "चूक":    "console.error",
   "सूचना":  "console.warn",
