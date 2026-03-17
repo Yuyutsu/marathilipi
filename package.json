@@ -1,6 +1,6 @@
 {
   "name": "marathilipi",
-  "version": "1.0.0",
+  "version": "1.0.01",
   "description": "Write TypeScript using Marathi (Devanagari) keywords — transpiled and executed via the official TypeScript compiler.",
   "main": "dist/index.js",
   "bin": {

@@ -1,15 +1,17 @@
 {
   "name": "marathilipi-language",
   "displayName": "MarathiLipi Language Support",
-  "description": "Syntax highlighting and language support for MarathiLipi — write TypeScript using Marathi (Devanagari) keywords.",
+  "description": "Syntax highlighting, snippets, autocomplete, hover info, and diagnostics for MarathiLipi — write TypeScript using Marathi (Devanagari) keywords.",
   "version": "0.1.0",
   "publisher": "marathilipi",
   "license": "MIT",
+  "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.80.0"
   },
   "categories": [
-    "Programming Languages"
+    "Programming Languages",
+    "Snippets"
   ],
   "keywords": [
     "marathi",
@@ -25,13 +27,17 @@
   "bugs": {
     "url": "https://github.com/Yuyutsu/marathilipi/issues"
   },
+  "activationEvents": [
+    "onLanguage:marathilipi"
+  ],
+  "main": "./out/extension",
   "contributes": {
     "languages": [
       {
         "id": "marathilipi",
         "aliases": [
           "MarathiLipi",
-          "marathilipi"
+          "marathi"
         ],
         "extensions": [
           ".ml"
@@ -45,13 +51,26 @@
         "scopeName": "source.marathilipi",
         "path": "./syntaxes/marathilipi.tmLanguage.json"
       }
+    ],
+    "snippets": [
+      {
+        "language": "marathilipi",
+        "path": "./snippets/marathilipi.code-snippets.json"
+      }
     ]
   },
-  "main": "",
   "scripts": {
-    "package": "vsce package"
+    "vscode:prepublish": "npm run build",
+    "build": "tsc -p tsconfig.json",
+    "compile": "tsc -p tsconfig.json",
+    "watch": "tsc -watch -p tsconfig.json",
+    "package": "npm run build && vsce package",
+    "publish": "npm run build && vsce publish"
   },
   "devDependencies": {
-    "@vscode/vsce": "^2.24.0"
+    "@types/node": "^20.12.7",
+    "@types/vscode": "^1.80.0",
+    "@vscode/vsce": "^2.24.0",
+    "typescript": "^5.4.5"
   }
 }

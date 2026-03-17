@@ -1,15 +1,19 @@
 # MarathiLipi Language Support
 
-> **VS Code extension** — Syntax highlighting for MarathiLipi (`.ml` files).
+> **VS Code extension** — Full language support for MarathiLipi (`.ml` files).
 
 MarathiLipi is a programming language that allows developers to write TypeScript
 using **Marathi (Devanagari) keywords**.  This extension provides:
 
 - ✅ Full syntax highlighting for all MarathiLipi keywords
 - ✅ Automatic language detection for `.ml` files
+- ✅ Code snippets for common constructs
+- ✅ IntelliSense / autocomplete for Marathi keywords
+- ✅ Hover documentation (shows the TypeScript equivalent)
+- ✅ Lightweight error diagnostics (warns on unknown Devanagari tokens)
 - ✅ Bracket matching (`{}`, `[]`, `()`)
 - ✅ Auto-closing pairs for brackets and quotes
-- ✅ Comment support (`//` and `/* */`)
+- ✅ Comment support (`#` line comments and `/* */` block comments)
 - ✅ Indentation rules
 
 ---
@@ -17,14 +21,17 @@ using **Marathi (Devanagari) keywords**.  This extension provides:
 ## Example
 
 ```ml
-नाव वय = 25
+# Variable declaration
+नाव व्यक्ती = "अमोल"
 
-जर (वय > 18) {
-  दाखवा("प्रौढ")
+# Conditional
+जर (व्यक्ती) {
+  दाखवा("नमस्कार " + व्यक्ती)
 }
 ```
 
 ```ml
+# Function
 काम बेरीज(अ, ब) {
   परत अ + ब
 }
@@ -32,6 +39,37 @@ using **Marathi (Devanagari) keywords**.  This extension provides:
 नाव निकाल = बेरीज(10, 20)
 दाखवा(निकाल)
 ```
+
+---
+
+## Snippets
+
+| Prefix | Description |
+|--------|-------------|
+| `jar` | `जर` (if) block |
+| `jar-nahitar` | `जर … नाहीतर` (if-else) block |
+| `karya` | `काम` (function) declaration |
+| `samakal-karya` | `समकाल काम` (async function) declaration |
+| `sang` | `दाखवा(…)` (console.log) |
+| `nav` | `नाव` (let) variable declaration |
+| `kayam` | `कायम` (const) constant declaration |
+| `joparynta` | `जोपर्यंत` (while) loop |
+| `punha` | `पुन्हा` (for) loop |
+| `prakar` | `प्रकार` (class) declaration |
+| `prayatna` | `प्रयत्न … पकडा` (try-catch) block |
+| `parat` | `परत` (return) statement |
+
+---
+
+## Autocomplete
+
+Start typing any Marathi (Devanagari) character to get keyword suggestions.
+Each suggestion shows the equivalent TypeScript keyword.
+
+## Hover Info
+
+Hover over any MarathiLipi keyword to see its TypeScript equivalent and a
+short description.
 
 ---
 
@@ -45,6 +83,8 @@ using **Marathi (Devanagari) keywords**.  This extension provides:
 | `स्थिर नाव` | `const`    |
 | `जुने नाव`  | `var`      |
 | `कायम`      | `const`    |
+| `चल`        | `let`      |
+| `स्थिर`     | `const`    |
 
 ### Control Flow
 
@@ -71,6 +111,7 @@ using **Marathi (Devanagari) keywords**.  This extension provides:
 | MarathiLipi  | TypeScript |
 |--------------|------------|
 | `काम`        | `function` |
+| `कार्य`      | `function` |
 | `परत`        | `return`   |
 | `समकाल`      | `async`    |
 | `प्रतीक्षा` | `await`    |
@@ -80,6 +121,7 @@ using **Marathi (Devanagari) keywords**.  This extension provides:
 | MarathiLipi  | TypeScript    |
 |--------------|---------------|
 | `प्रकार`     | `class`       |
+| `वर्ग`       | `class`       |
 | `वाढवा`      | `extends`     |
 | `नवीन`       | `new`         |
 | `हा`          | `this`        |
@@ -110,6 +152,7 @@ using **Marathi (Devanagari) keywords**.  This extension provides:
 |-------------|-----------------|
 | `दाखवा`     | `console.log`   |
 | `सांगा`     | `console.log`   |
+| `सांग`      | `console.log`   |
 | `छापा`      | `console.log`   |
 | `चूक`       | `console.error` |
 | `सूचना`     | `console.warn`  |
@@ -135,7 +178,18 @@ code --install-extension marathilipi-language-0.1.0.vsix
 
 1. Open the `vscode-extension/` folder in VS Code.
 2. Press **F5** — this opens a new Extension Development Host window.
-3. Open any `.ml` file to see syntax highlighting.
+3. Open any `.ml` file to see syntax highlighting, snippets, and autocomplete.
+
+---
+
+## Publishing to the Marketplace
+
+```bash
+cd vscode-extension
+npm install
+npm run package   # test packaging locally first
+npm run publish   # requires VSCE_PAT environment variable
+```
 
 ---
 
