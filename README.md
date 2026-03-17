@@ -1,6 +1,21 @@
 # MarathiLipi 🏆
 
-> Write TypeScript using **Marathi (Devanagari)** keywords — transpiled and executed via the official TypeScript compiler.
+MarathiLipi is a lightweight language layer that enables developers to write
+JavaScript and TypeScript using **Marathi (Devanagari)** syntax.
+
+It transpiles MarathiLipi code into valid TypeScript, which is then compiled to
+JavaScript and executed using Node.js.
+
+---
+
+## Overview
+
+MarathiLipi does **not** replace JavaScript or TypeScript.  
+It builds on top of them.
+
+```text
+MarathiLipi → TypeScript → JavaScript → Runtime (Node.js)
+```
 
 ---
 
@@ -13,7 +28,7 @@ official TypeScript compiler API — no custom parser needed.
 ```
 MarathiLipi (.ml)
       ↓
-  Transpiler       ← keyword replacement (src/core/keywordMap.ts)
+  Transpiler       ← keyword replacement (src/core/dictionary.ts)
       ↓
 TypeScript Code
       ↓
@@ -307,8 +322,9 @@ type ID = string | number
 
 1. **CLI** (`src/cli/cli.ts`) parses command-line arguments and delegates to the Runner.
 2. **Runner** (`src/core/runner.ts`) reads the `.ml` file, calls the Transpiler, and then uses `ts.transpileModule()` to compile TypeScript to JavaScript which is executed in a sandboxed VM context.
-3. **Transpiler** (`src/core/transpiler.ts`) iterates over the keyword map and replaces each Marathi keyword with its TypeScript equivalent using word-boundary-aware regular expressions.
-4. **Keyword Map** (`src/core/keywordMap.ts`) is the **single source of truth** for all translations.
+3. **Transpiler** (`src/core/transpiler.ts`) iterates over the keyword list in sort order (multi-word phrases first, then by length) and replaces each Marathi keyword with its TypeScript equivalent using word-boundary-aware regular expressions.
+4. **Dictionary** (`src/core/dictionary.ts`) is the **single source of truth** for all translations.  Each entry groups one or more Marathi aliases that map to the same TypeScript keyword, together with a description and optional Latin-script shorthands for VS Code autocomplete.
+5. **Keyword Map** (`src/core/keywordMap.ts`) is derived automatically from the dictionary and re-exports the same flat `Record<string, string>` used by the runner and existing tooling.
 
 ---
 
@@ -351,7 +367,7 @@ Rows with `/` list aliases that all map to the same TypeScript keyword.
 | पकडा                         | catch            |
 | शेवटी                        | finally          |
 | फेका                         | throw            |
-| दाखवा / सांगा / छापा        | console.log      |
+| दाखवा / सांगा / सांग / छापा | console.log      |
 | चूक                          | console.error    |
 | सूचना                        | console.warn     |
 | माहिती                       | console.info     |
@@ -376,14 +392,20 @@ Rows with `/` list aliases that all map to the same TypeScript keyword.
 
 ## How to Add New Keywords
 
-1. Open `src/core/keywordMap.ts`.
-2. Add an entry:
+1. Open `src/core/dictionary.ts`.
+2. Add a new entry (or add an alias to an existing entry's `patterns` array):
    ```ts
-   "मराठी_शब्द": "tsKeyword",
+   {
+     patterns: ["मराठी_शब्द"],          // one or more Marathi aliases
+     replace: "tsKeyword",               // TypeScript equivalent
+     description: "Short description",
+     romanizedPrefixes: ["roman"],       // optional: Latin-script autocomplete hints
+   },
    ```
 3. Rebuild: `npm run build`.
 
-That's it — no other file needs to change.
+That's it — `keywordMap.ts` derives itself from the dictionary automatically,
+and the VS Code extension picks up the new entry from the same source.
 
 ---
 
@@ -395,7 +417,8 @@ marathilipi/
 │   ├── cli/
 │   │   └── cli.ts          # CLI entry point
 │   ├── core/
-│   │   ├── keywordMap.ts   # ← single source of truth for all keywords
+│   │   ├── dictionary.ts   # ← single source of truth (structured keyword entries)
+│   │   ├── keywordMap.ts   # flat map derived from dictionary.ts
 │   │   ├── transpiler.ts   # Marathi → TypeScript conversion
 │   │   ├── runner.ts       # orchestrates read → transpile → compile → run
 │   │   └── types.ts        # shared type definitions
@@ -406,7 +429,11 @@ marathilipi/
 │   ├── hello.ml            # hello world example
 │   └── age_check.ml        # if/else example
 ├── tests/
-│   └── transpiler.test.ts  # unit tests
+│   ├── transpiler.test.ts  # transpiler unit tests
+│   └── dictionary.test.ts  # dictionary structure & ordering tests
+├── vscode-extension/
+│   └── src/
+│       └── extension.ts    # autocomplete, hover, diagnostics
 ├── package.json
 ├── tsconfig.json
 └── README.md
@@ -507,8 +534,32 @@ code --install-extension marathilipi-language-0.1.0.vsix
 | Language detection | Automatic for `.ml` files |
 | Bracket matching | `{}` `[]` `()` |
 | Auto-closing pairs | Brackets and quotes |
-| Comment shortcuts | `//` line comments, `/* */` block comments |
+| Comment shortcuts | `#` line comments, `/* */` block comments |
 | Indentation | Smart indent/outdent around blocks |
+| **Autocomplete** | Suggests full Marathi phrases while typing Devanagari |
+| **Romanized autocomplete** | Type a Latin-script shorthand to surface the Marathi phrase (see table below) |
+| **Hover** | Shows TypeScript equivalent and description for any keyword |
+| **Diagnostics** | Warns about unrecognised Devanagari tokens |
+
+### Romanized Autocomplete Shorthands
+
+Type a Latin prefix in a `.ml` file and the extension suggests the matching
+Marathi keyword — useful when you don't have a Devanagari IME active.
+
+| Type… | Suggests |  Maps to |
+|-------|----------|----------|
+| `sth` | `स्थिर नाव` | `const` |
+| `kay` | `कायम` | `const` |
+| `nav` | `नाव` | `let` |
+| `jun` | `जुने नाव` | `var` |
+| `dak` | `दाखवा` | `console.log` |
+| `san` | `सांगा` | `console.log` |
+| `jar` | `जर` | `if` |
+| `nah` | `नाहीतर` | `else` |
+| `kam` | `काम` | `function` |
+| `par` | `परत` | `return` |
+| `sam` | `समकाल` | `async` |
+| `prat` | `प्रतीक्षा` | `await` |
 
 ---
 
