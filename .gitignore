@@ -9,3 +9,8 @@ dist/
 tests/*.js
 tests/*.d.ts
 tests/*.js.map
+
+# VS Code extension build artifacts
+vscode-extension/out/
+vscode-extension/node_modules/
+vscode-extension/*.vsix

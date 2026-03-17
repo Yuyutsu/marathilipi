@@ -37,6 +37,14 @@
           }
         },
         {
+          "name": "comment.line.number-sign.marathilipi",
+          "begin": "#",
+          "end": "$",
+          "beginCaptures": {
+            "0": { "name": "punctuation.definition.comment.marathilipi" }
+          }
+        },
+        {
           "name": "comment.line.double-slash.marathilipi",
           "begin": "//",
           "end": "$",
@@ -141,7 +149,7 @@
       "patterns": [
         {
           "name": "support.function.console.marathilipi",
-          "match": "(?<![\\w\\u0900-\\u097F])(दाखवा|सांगा|छापा|चूक|सूचना|माहिती)(?![\\w\\u0900-\\u097F])"
+          "match": "(?<![\\w\\u0900-\\u097F])(दाखवा|सांगा|सांग|छापा|चूक|सूचना|माहिती)(?![\\w\\u0900-\\u097F])"
         }
       ]
     },
@@ -151,7 +159,7 @@
       "patterns": [
         {
           "name": "keyword.declaration.variable.marathilipi",
-          "match": "(?<![\\w\\u0900-\\u097F])(नाव|कायम)(?![\\w\\u0900-\\u097F])"
+          "match": "(?<![\\w\\u0900-\\u097F])(नाव|कायम|चल|स्थिर)(?![\\w\\u0900-\\u097F])"
         }
       ]
     },
@@ -181,7 +189,7 @@
       "patterns": [
         {
           "name": "keyword.declaration.function.marathilipi",
-          "match": "(?<![\\w\\u0900-\\u097F])(काम)(?![\\w\\u0900-\\u097F])"
+          "match": "(?<![\\w\\u0900-\\u097F])(काम|कार्य)(?![\\w\\u0900-\\u097F])"
         },
         {
           "name": "keyword.control.flow.marathilipi",
@@ -199,7 +207,7 @@
       "patterns": [
         {
           "name": "keyword.declaration.class.marathilipi",
-          "match": "(?<![\\w\\u0900-\\u097F])(प्रकार)(?![\\w\\u0900-\\u097F])"
+          "match": "(?<![\\w\\u0900-\\u097F])(प्रकार|वर्ग)(?![\\w\\u0900-\\u097F])"
         },
         {
           "name": "keyword.other.class.marathilipi",

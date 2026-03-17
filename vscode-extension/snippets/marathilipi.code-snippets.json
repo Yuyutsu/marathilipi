@@ -1,0 +1,121 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Yuyutsu/vscode-snippets/main/schema.json",
+  "If block": {
+    "scope": "marathilipi",
+    "prefix": "jar",
+    "body": [
+      "जर (${1:condition}) {",
+      "\t$2",
+      "}"
+    ],
+    "description": "If statement (जर)"
+  },
+  "If-Else block": {
+    "scope": "marathilipi",
+    "prefix": "jar-nahitar",
+    "body": [
+      "जर (${1:condition}) {",
+      "\t$2",
+      "} नाहीतर {",
+      "\t$3",
+      "}"
+    ],
+    "description": "If-else statement (जर … नाहीतर)"
+  },
+  "Function declaration": {
+    "scope": "marathilipi",
+    "prefix": "karya",
+    "body": [
+      "काम ${1:name}(${2:params}) {",
+      "\t$3",
+      "}"
+    ],
+    "description": "Function declaration (काम)"
+  },
+  "Async function declaration": {
+    "scope": "marathilipi",
+    "prefix": "samakal-karya",
+    "body": [
+      "समकाल काम ${1:name}(${2:params}) {",
+      "\t$3",
+      "}"
+    ],
+    "description": "Async function declaration (समकाल काम)"
+  },
+  "Console log": {
+    "scope": "marathilipi",
+    "prefix": "sang",
+    "body": [
+      "दाखवा(${1})"
+    ],
+    "description": "Print to console (दाखवा)"
+  },
+  "Variable declaration": {
+    "scope": "marathilipi",
+    "prefix": "nav",
+    "body": [
+      "नाव ${1:name} = ${2:value}"
+    ],
+    "description": "Variable declaration (नाव)"
+  },
+  "Constant declaration": {
+    "scope": "marathilipi",
+    "prefix": "kayam",
+    "body": [
+      "कायम ${1:name} = ${2:value}"
+    ],
+    "description": "Constant declaration (कायम)"
+  },
+  "While loop": {
+    "scope": "marathilipi",
+    "prefix": "joparynta",
+    "body": [
+      "जोपर्यंत (${1:condition}) {",
+      "\t$2",
+      "}"
+    ],
+    "description": "While loop (जोपर्यंत)"
+  },
+  "For loop": {
+    "scope": "marathilipi",
+    "prefix": "punha",
+    "body": [
+      "पुन्हा (नाव ${1:i} = 0; ${1:i} < ${2:length}; ${1:i}++) {",
+      "\t$3",
+      "}"
+    ],
+    "description": "For loop (पुन्हा)"
+  },
+  "Class declaration": {
+    "scope": "marathilipi",
+    "prefix": "prakar",
+    "body": [
+      "प्रकार ${1:ClassName} {",
+      "\tनिर्माता(${2:params}) {",
+      "\t\t$3",
+      "\t}",
+      "}"
+    ],
+    "description": "Class declaration (प्रकार)"
+  },
+  "Try-catch block": {
+    "scope": "marathilipi",
+    "prefix": "prayatna",
+    "body": [
+      "प्रयत्न {",
+      "\t$1",
+      "} पकडा (${2:error}) {",
+      "\tचूक(${2:error})",
+      "}"
+    ],
+    "description": "Try-catch block (प्रयत्न … पकडा)"
+  },
+  "Return statement": {
+    "scope": "marathilipi",
+    "prefix": "parat",
+    "body": [
+      "परत ${1:value}"
+    ],
+    "description": "Return statement (परत)"
+  }
+}
