@@ -2,6 +2,7 @@
   "name": "marathilipi",
   "version": "1.0.01",
   "description": "Write TypeScript using Marathi (Devanagari) keywords — transpiled and executed via the official TypeScript compiler.",
+  "homepage": "https://yuyutsu.github.io/marathilipi",
   "main": "dist/index.js",
   "bin": {
     "marathilipi": "dist/cli/cli.js"
