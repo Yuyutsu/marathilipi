@@ -13,6 +13,7 @@ const navItems = [
   { key: "vscode", path: "vscode" },
   { key: "architecture", path: "architecture" },
   { key: "about", path: "about" },
+  { key: "contact", path: "contact" },
 ] as const;
 
 export default function Header({ lang }: { lang: Lang }) {

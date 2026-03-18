@@ -14,6 +14,7 @@ import { content as playground } from "./playground";
 import { content as vscode } from "./vscode";
 import { content as architecture } from "./architecture";
 import { content as about } from "./about";
+import { content as contact } from "./contact";
 
 export const mr = {
   ...site,
@@ -32,4 +33,5 @@ export const mr = {
   ...vscode,
   ...architecture,
   ...about,
+  ...contact,
 } as const;
