@@ -34,11 +34,11 @@ export default async function GettingStartedPage({
         <div className="grid md:grid-cols-2 gap-4 mb-4">
           <CodeBlock
             title="hello.ml"
-            code={`चल नाव = "राजसाहेब"\nसांगा("जय महाराष्ट्र " + नाव)`}
+            code={`नाव साहेब = "राजसाहेब"\nसांगा("जय महाराष्ट्र " + साहेब)`}
           />
           <CodeBlock
             title="TypeScript"
-            code={`let नाव = "राजसाहेब"\nconsole.log("जय महाराष्ट्र " + नाव)`}
+            code={`let साहेब = "राजसाहेब"\nconsole.log("जय महाराष्ट्र " + साहेब)`}
           />
         </div>
       </section>
