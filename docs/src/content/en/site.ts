@@ -15,6 +15,7 @@ export const content = {
     vscode: "VS Code Extension",
     architecture: "Architecture",
     about: "About",
+    contact: "Contact",
   },
   sidebar: {
     languageReference: "Language Reference",
