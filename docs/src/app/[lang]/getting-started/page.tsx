@@ -38,7 +38,7 @@ export default async function GettingStartedPage({
           />
           <CodeBlock
             title="TypeScript"
-            code={`let साहेब = "राजसाहेब"\nconsole.log("जय महाराष्ट्र " + साहेब)`}
+            code={`let saheb = "राजसाहेब"\nconsole.log("जय महाराष्ट्र " + saheb)`}
           />
         </div>
       </section>
